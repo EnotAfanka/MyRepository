@@ -5,9 +5,6 @@ from PyQt5.QtCore import Qt
 from functools import partial
 
 
-windowSize = 235
-displayHeight = 35
-buttonSize = 40
 errorMessage = 'ERROR'
 
 
@@ -15,7 +12,7 @@ class CalculatorWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Calculator')
-        self.setFixedSize(windowSize, windowSize+65)
+        self.setMinimumSize(235, 300)
         self.setWindowIcon(QtGui.QIcon('icon.ico'))
         self.setStyleSheet("background-color: #222222;")
         self.generalLayout = QVBoxLayout()
@@ -27,7 +24,7 @@ class CalculatorWindow(QMainWindow):
 
     def _createDisplay(self):
         self.display = QLineEdit()
-        self.display.setFixedHeight(displayHeight+35)
+        self.display.setMinimumSize(40, 100)
         self.display.setAlignment(Qt.AlignmentFlag.AlignRight)
         self.display.setReadOnly(True)
         self.display.setStyleSheet('QLineEdit {border: 1px solid #B2DFDB; font-size: 32px; font-weight: bold; background-color: #B2DFDB; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);}' )
@@ -46,7 +43,7 @@ class CalculatorWindow(QMainWindow):
         for row, keys in enumerate(keyBoard):
             for col, key in enumerate(keys):
                 self.buttonMap[key] = QPushButton(key)
-                self.buttonMap[key].setFixedSize(buttonSize, buttonSize)
+                self.buttonMap[key].setMinimumSize(40, 40)
                 self.buttonMap[key].setStyleSheet(
                     'QPushButton {background-color: #B2DFDB; color: black; padding: 5px; border: 2px solid gray; border-radius: 20px; font-size: 18px;}'
                     'QPushButton:hover {background-color: #80CBC4;}'
