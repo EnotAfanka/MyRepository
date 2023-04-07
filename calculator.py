@@ -1,7 +1,8 @@
 import sys
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QFont
 from functools import partial
 
 
@@ -48,18 +49,21 @@ class CalculatorWindow(QMainWindow):
             ['0', '00', '.', '+', '=']
         ]
 
+        font = QFont('Times New Roman', 20)
         for row, keys in enumerate(keyBoard):
             for col, key in enumerate(keys):
                 self.buttonMap[key] = QPushButton(key)
+                self.buttonMap[key].setFont(font)
                 self.buttonMap[key].setMinimumSize(40, 40)
+                self.buttonMap[key].setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
                 self.buttonMap[key].setStyleSheet(
-                    'QPushButton {background-color: #B2DFDB; color: black; padding: 5px; border: 2px solid gray; border-radius: 20px; font-size: 18px;}'
+                    'QPushButton {background-color: #B2DFDB; color: black; padding: 5px; border: 2px solid gray; border-radius: 20px;}'
                     'QPushButton:hover {background-color: #80CBC4;}'
                     'QPushButton:pressed {border-style: inset; background-color: #4DB6AC;}'
                 )
                 buttonsLayout.addWidget(self.buttonMap[key], row, col)
         self.buttonMap['C'].setStyleSheet(
-                    'QPushButton {background-color: #ff8c69; color: black; padding: 5px; border: 2px solid gray; border-radius: 20px; font-size: 18px;}'
+                    'QPushButton {background-color: #ff8c69; color: black; padding: 5px; border: 2px solid gray; border-radius: 20px;}'
                     'QPushButton:hover {background-color: #ff7f7f;}'
                     'QPushButton:pressed {border-style: inset; background-color: #ff4040;}'
                 )
