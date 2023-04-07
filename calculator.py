@@ -33,10 +33,13 @@ class CalculatorWindow(QMainWindow):
 
     def _createDisplay(self):
         self.display = QLineEdit()
-        self.display.setMinimumSize(40, 100)
         self.display.setAlignment(Qt.AlignmentFlag.AlignRight)
         self.display.setReadOnly(True)
-        self.display.setStyleSheet('QLineEdit {border: 1px solid #B2DFDB; font-size: 32px; font-weight: bold; background-color: #B2DFDB; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);}' )
+        font = QFont('Arial', 32)
+        self.display.setFont(font)
+        displayHeight = self.height() * 0.4
+        self.display.setFixedHeight(int(displayHeight))
+        self.display.setStyleSheet('QLineEdit {border: 1px solid #B2DFDB; font-weight: bold; background-color: #B2DFDB; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);}' )
         self.generalLayout.addWidget(self.display)
 
     def _createButtons(self):
