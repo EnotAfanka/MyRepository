@@ -41,6 +41,7 @@ class CalculatorWindow(QMainWindow):
         self.display.setFixedHeight(int(displayHeight))
         self.display.setStyleSheet('QLineEdit {border: 1px solid #B2DFDB; font-weight: bold; background-color: #B2DFDB; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);}' )
         self.generalLayout.addWidget(self.display)
+        self.generalLayout.setStretch(0, 4)
 
     def _createButtons(self):
         self.buttonMap = {}
