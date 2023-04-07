@@ -15,7 +15,15 @@ class CalculatorWindow(QMainWindow):
         self.setMinimumSize(235, 300)
         self.setWindowIcon(QtGui.QIcon('icon.ico'))
         self.setStyleSheet("background-color: #222222;")
+        self.setWindowFlags(Qt.Window | Qt.WindowMaximizeButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint)
         self.generalLayout = QVBoxLayout()
+        screen = QDesktopWidget().screenGeometry()
+        screenWidth = screen.width()
+        screenHeight = screen.height()
+        if screenWidth < 500:
+            self.setGeometry(0, 0, int(screenWidth * 0.9), int(screenHeight * 0.7))
+        else:
+            self.setGeometry(0, 0, 300, 400)
         centralWidget = QWidget(self)
         centralWidget.setLayout(self.generalLayout)
         self.setCentralWidget(centralWidget)
